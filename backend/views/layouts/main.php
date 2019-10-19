@@ -35,9 +35,14 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
+    $menuItems = [];
+    if(Yii::$app->user->can('admin')) {
+        $menuItems = [
+            ['label' => 'Products', 'url' => ['/product/index']],
+            ['label' => 'Sizes', 'url' => ['/size/index']],
+            ['label' => 'Prices', 'url' => ['/price/index']],
+        ];
+    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {

@@ -15,6 +15,7 @@ class m191017_201950_create_price_table extends Migration
         $this->createTable('{{%price}}', [
             'id' => $this->primaryKey(),
             'm_price' => $this->decimal(10, 2)->notNull(),
+            'i_quantity' => $this->integer()->defaultValue(0),
             'size_id' => $this->integer()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

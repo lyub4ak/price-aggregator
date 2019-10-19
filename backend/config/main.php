@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => 'Price Aggregator',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -42,10 +43,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '' => 'site/index',
+                '' => '',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
     ],
     'params' => $params,
+    'defaultRoute' => 'product',
 ];

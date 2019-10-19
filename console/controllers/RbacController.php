@@ -13,6 +13,7 @@ class RbacController extends Controller
 {
     /**
      * Initializes RBAC for application.
+     * Command for execute : yii rbac/init
      *
      * @throws \yii\base\Exception
      */
@@ -33,6 +34,7 @@ class RbacController extends Controller
 
     /**
      * Assigns role "admin" for user.
+     * Command for execute : yii rbac/assign-admin 'id'
      *
      * @param string $id Primary key of user which should be assigned as "admin".
      * @throws \Exception
