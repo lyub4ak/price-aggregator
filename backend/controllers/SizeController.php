@@ -2,10 +2,10 @@
 
 namespace backend\controllers;
 
-use backend\models\Product;
+use common\models\Product;
 use Yii;
-use backend\models\Size;
-use backend\models\SizeSearch;
+use common\models\Size;
+use common\models\SizeSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

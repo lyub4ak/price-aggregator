@@ -1,60 +1,14 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+Существуют группа товаров: товар A, товар B, товар C, товар D, товар E. Каждый товар содержит множество торговых предложений, в зависимости от характеристик: длина, ширина, высота. Все три характеристики имеют целочисленные значения от 1 до 5.  
+У товара в зависимости от Ш\*Д\*В, меняется торговое предложение, которое идентифицируется по артикулу. В соответствии с этим артикулом идут стоимость данного торгового предложения и его наличие на складе.  
+**Задача**
+1. Создать базу данных товаров и торговых предложений с необходимыми таблицами + функционал по администрированию базы данных (back-end) и вывод результатов (front-end).
+2. Примерный вид front-end:
+   - Товары: вывод товаров + фильтрация по Ш*Д*В и по диапазону цены
+   - Товар: вывод торговых предложений в динамике: пользователь поэтапно выбирает значения Ш – подставляются возможные варианты Д*В, выбирает Д – подставляются возможные варианты Д, выбирает Д – получает артикул, цену и остаток.  
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
-
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
-
-DIRECTORY STRUCTURE
--------------------
-
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
+3. Back-end: внешний вид и функционал системы администрирования на усмотрение кандидата на вакансию веб-программиста.
+4. Требования:
+   - PHP 5.6 и выше
+   - Yii 2.0. advanced
+   - MySQL 5.6.
+5. Необходимо создать максимально простое и лаконичное управление, удобное в администрировании такой базы данных товаров, а также удобное для просмотра front-end.

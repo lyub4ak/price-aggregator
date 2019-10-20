@@ -43,10 +43,11 @@ return [
             'showScriptName' => false,
             'rules' => [
                 //['class' => 'frontend\components\ClassUrlRule'],
-                '' => 'site/index',
+                '' => '',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
     ],
     'params' => $params,
+    'defaultRoute' => 'price',
 ];

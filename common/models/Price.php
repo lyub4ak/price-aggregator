@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\behaviors\TimestampBehavior;
 
@@ -43,8 +43,10 @@ class Price extends \yii\db\ActiveRecord
     {
         return [
             [['m_price', 'size_id'], 'required'],
-            [['m_price'], 'number'],
-            [['i_quantity', 'size_id', 'created_at', 'updated_at'], 'integer'],
+            [['m_price'], 'number', 'min'=>0],
+            [['i_quantity'], 'integer', 'min'=>0],
+            [['i_quantity'], 'default', 'value'=>0],
+            [['size_id', 'created_at', 'updated_at'], 'integer'],
             [['size_id'], 'exist', 'skipOnError' => true, 'targetClass' => Size::className(), 'targetAttribute' => ['size_id' => 'id']],
         ];
     }

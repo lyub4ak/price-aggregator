@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -10,6 +10,8 @@ use yii\data\ActiveDataProvider;
  */
 class PriceSearch extends Price
 {
+    const SCENARIO_PRICE_RANGE = 'price_range';
+
     /**
      * Product name.
      *
@@ -39,6 +41,22 @@ class PriceSearch extends Price
     public $height;
 
     /**
+     * Start value for range of product price.
+     * Used in scenario 'price_range'.
+     *
+     * @var string
+     */
+    public $m_price_from;
+
+    /**
+     * End value for range of product price.
+     * Used in scenario 'price_range'.
+     *
+     * @var string
+     */
+    public $m_price_to;
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
@@ -47,6 +65,7 @@ class PriceSearch extends Price
             [['id', 'i_quantity', 'size_id', 'created_at', 'updated_at'], 'integer'],
             [['m_price'], 'number'],
             [['productName', 'width', 'length', 'height'], 'safe'],
+            [['m_price_from', 'm_price_to'], 'number', 'on' => self::SCENARIO_PRICE_RANGE]
         ];
     }
 
@@ -126,9 +145,20 @@ class PriceSearch extends Price
             'size.i_height' => $this->height,
         ]);
 
-        // Adds filters by product name and price.
-        $query->andFilterWhere(['like', 'product.text_name', $this->productName])
-            ->andFilterWhere(['like', 'm_price', $this->m_price]);
+        // Adds filter by product name.
+        $query->andFilterWhere(['like', 'product.text_name', $this->productName]);
+
+        // Adds filter by product price.
+        if($this->scenario == self::SCENARIO_PRICE_RANGE) {
+            if ($this->m_price_from && !$this->m_price_to)
+                $query->andFilterWhere(['>=', 'm_price', $this->m_price_from]);
+            elseif (!$this->m_price_from && $this->m_price_to)
+                $query->andFilterWhere(['<=', 'm_price', $this->m_price_to]);
+            else
+                $query->andFilterWhere(['between', 'm_price', $this->m_price_from, $this->m_price_to]);
+        } else {
+            $query->andFilterWhere(['like', 'm_price', $this->m_price]);
+        }
 
         return $dataProvider;
     }
